@@ -41,8 +41,8 @@ app.post("/image/add", async (req, res) => {
 });
 
 app.get("/images", async (req, res) => {
-    const todos = await imagesTable.select();
-    res.json({ todos: todos });
+    const images = await imagesTable.select();
+    res.json({ images: images });
 });
 
 app.put("/image/update", async (req, res) => {
