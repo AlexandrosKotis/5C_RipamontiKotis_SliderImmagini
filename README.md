@@ -1,1 +1,1 @@
-© Copyright 2024 by Angelo Ripamonti & Alexandros Kotis - All rights reserved.
+© Copyright 2025 by Angelo Ripamonti & Alexandros Kotis - All rights reserved.
