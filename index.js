@@ -13,7 +13,7 @@ const imagesTable = database(config);
 
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, path.join(__dirname, "./dist/images"));
+        callback(null, path.join(__dirname, "dist/images"));
     },
     filename: function (req, file, callback) {
         callback(null, file.originalname);
