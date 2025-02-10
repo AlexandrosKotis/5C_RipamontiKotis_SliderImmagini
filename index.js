@@ -4,13 +4,12 @@ const bodyParser = require('body-parser');
 let http = require("http");
 const path = require('path');
 const fs = require('fs');
-const mysql = require('mysql2');
 const multer = require('multer');
 const database = require("./database.js");
 const config = JSON.parse(fs.readFileSync('config.json'));
 config.ssl.ca = fs.readFileSync(__dirname + '/ca.pem');
 const app = express();
-const imagesTable = await database(config);
+const imagesTable = database(config);
 
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {

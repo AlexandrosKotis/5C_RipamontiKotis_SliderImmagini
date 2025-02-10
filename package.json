@@ -8,6 +8,7 @@
     "start": "npm run build && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexandrosKotis/5C_RipamontiKotis_SliderImmagini.git"

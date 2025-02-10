@@ -1,3 +1,4 @@
+const mysql = require('mysql2');
 module.exports = async function imagesTable (config) {
     const connection = mysql.createConnection(config);
 
@@ -17,7 +18,7 @@ module.exports = async function imagesTable (config) {
         return await executeQuery(`
            CREATE TABLE IF NOT EXISTS images ( 
               id INT PRIMARY KEY AUTO_INCREMENT, 
-              url VARCHAR(255) NOT NULL, 
+              url VARCHAR(255) NOT NULL 
            );
         `);
     }
