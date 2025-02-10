@@ -13,7 +13,7 @@ const imagesTable = database(config);
 
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, path.join(__dirname, "files"));
+        callback(null, path.join(__dirname, "./dist/images"));
     },
     filename: function (req, file, callback) {
         callback(null, file.originalname);
@@ -36,7 +36,7 @@ app.post("/image/add", async (req, res) => {
         const filename = req.file.filename;
         await imagesTable.insert(filename);
         //res.json({ result: "Ok" });   
-        res.json({ url: "./files/" + req.file.filename });
+        res.json({ url: "./dist/images/" + req.file.filename });
     })
 });
 
@@ -63,7 +63,7 @@ app.put("/image/update", async (req, res) => {
             console.error(e);
         }
         //res.json({ result: "Ok" });
-        res.json({ url: "./files/" + req.file.filename });
+        res.json({ url: "./dist/images/" + req.file.filename });
     })
 });
 
