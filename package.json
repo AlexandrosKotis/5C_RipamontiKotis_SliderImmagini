@@ -1,0 +1,27 @@
+{
+  "name": "sliderimmagini",
+  "version": "1.0.0",
+  "description": "© Copyright 2024 by Angelo Ripamonti & Alexandros Kotis - All rights reserved.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm i -y",
+    "start": "npm run build && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandrosKotis/5C_RipamontiKotis_SliderImmagini.git"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "html",
+    "css"
+  ],
+  "author": "Angelo Ripamonti & Alexandros Kotis",
+  "license": "CC-BY-NC-ND-4.0",
+  "bugs": {
+    "url": "https://github.com/AlexandrosKotis/5C_RipamontiKotis_SliderImmagini/issues"
+  },
+  "homepage": "https://github.com/AlexandrosKotis/5C_RipamontiKotis_SliderImmagini#readme"
+}

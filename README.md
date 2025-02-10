@@ -1,1 +1,1 @@
-# 5C_RipamontiKotis_SliderImmagini
+© Copyright 2024 by Angelo Ripamonti & Alexandros Kotis - All rights reserved.
