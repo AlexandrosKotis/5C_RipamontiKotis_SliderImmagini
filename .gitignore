@@ -131,3 +131,5 @@ dist
 
 # Custom
 package-lock.json
+config.json
+ca.pem
