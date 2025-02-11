@@ -1,5 +1,5 @@
 export function images(parentElement, pubSub) {
-    let imgs = [];
+    let imgs = [{ id:1, url:"/dist/assets/images/Alter Kaufmannhof.jpg"}, {id:2, url:"/dist/assets/images/kts.jpg"}, {id:3, url:"/dist/assets/images/Nikolai.jpg"}];
 
     return {
         build: function () {
@@ -9,32 +9,33 @@ export function images(parentElement, pubSub) {
             });
         },
         render: function () {
-            let html = `<div id="carouselImagesIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    ${
-                        imgs.map((img, index) => {
-                            return `<button type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide-to="${index}" aria-current="${index === 0 ? "true" : "false"}" aria-label="Slide ${index}"></button>`
-                        }).join("")
-                    }
-                </div>
-                <div class="carousel-inner">
-                    ${
-                        imgs.map((img, index) => {
-                            return `<div class="carousel-item ${index == 0 ? "active" : ""}">
-                                        <img src="${img.url}" class="d-block w-100" alt="Immagine n° ${img.id}">
-                                    </div>`
-                        }).join("")
-                    }
-                </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>`;
+            let html = `<div id="carouselImagesIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">` +
+                                    imgs.map((img, index) => {
+                                        return `<button type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide-to="`+ index +`" 
+                                                class="` + (index === 0 ? "active" : "") + `" 
+                                                aria-current="` + (index === 0 ? "true" : "false") + `" 
+                                                aria-label="Slide `+ (img.id) + `"></button>`
+                                    }).join("")
+                                + 
+                            `</div>
+                            <div class="carousel-inner">` +
+                                    imgs.map((img, index) => {
+                                        return `<div class="carousel-item `+ (index == 0 ? "active" : "") + `">
+                                                    <img src="`+ img.url + `" class="d-block w-100" alt="Immagine n° `+ img.id + `">
+                                                </div>`
+                                    }).join("")
+                                + 
+                            `</div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>`;
             
             parentElement.innerHTML = html;
         },
