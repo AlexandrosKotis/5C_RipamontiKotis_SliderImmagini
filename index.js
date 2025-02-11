@@ -45,6 +45,12 @@ app.get("/images", async (req, res) => {
     res.json({ images: images });
 });
 
+
+app.get("/configuration", async (req, res) => {
+    const config = JSON.parse(fs.readFileSync('configuration.json'));
+    res.json(config);
+});
+
 app.put("/image/update", async (req, res) => {
     const todo = req.body;
     await upload(req, res, async (err) => {

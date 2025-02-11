@@ -133,3 +133,4 @@ dist
 package-lock.json
 config.json
 ca.pem
+configuration.json
