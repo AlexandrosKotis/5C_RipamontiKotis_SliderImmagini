@@ -20,7 +20,7 @@ export function images(parentElement, pubSub) {
                 <div class="carousel-inner">
                     ${
                         imgs.map((img, index) => {
-                            return `<div class="carousel-item active">
+                            return `<div class="carousel-item ${index == 0 ? "active" : ""}">
                                         <img src="${img.url}" class="d-block w-100" alt="Immagine n° ${img.id}">
                                     </div>`
                         }).join("")
