@@ -13,7 +13,7 @@ const imagesTable = database(config);
 
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, path.join(__dirname, "dist/images"));
+        callback(null, path.join(__dirname, "dist/assets/images"));
     },
     filename: function (req, file, callback) {
         callback(null, file.originalname);
@@ -21,7 +21,7 @@ let storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage }).single('file');
 
-if (!fs.existsSync("./dist/images")) fs.mkdirSync("./dist/images", { recursive: true });
+if (!fs.existsSync("./dist/assets/images")) fs.mkdirSync("./dist/assets/images", { recursive: true });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,7 +36,7 @@ app.post("/image/add", async (req, res) => {
         const filename = req.file.filename;
         await imagesTable.insert(filename);
         //res.json({ result: "Ok" });   
-        res.json({ url: "./dist/images/" + req.file.filename });
+        res.json({ url: "./dist/assets/images/" + req.file.filename });
     })
 });
 
@@ -69,7 +69,7 @@ app.put("/image/update", async (req, res) => {
             console.error(e);
         }
         //res.json({ result: "Ok" });
-        res.json({ url: "./dist/images/" + req.file.filename });
+        res.json({ url: "./dist/assets/images/" + req.file.filename });
     })
 });
 
