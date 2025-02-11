@@ -39,7 +39,7 @@ export async function credential(parentElement, pubSub) {
             document.getElementById("loginSubmit").onclick = async () => {
                 const usernameInput = document.getElementById("username").value;
                 const passwordInput = document.getElementById("password").value;
-                const rememberMeInput = document.getElementById("rememberMe").value;
+                const rememberMeInput = document.getElementById("rememberMe").checked;
                 if(!usernameInput || !passwordInput) return document.getElementById("errorMessage").classList.remove("d-none");
                 if(await this.login(usernameInput, passwordInput)){
                     if(rememberMeInput) localStorage.setItem("isLogged", true);
@@ -49,6 +49,9 @@ export async function credential(parentElement, pubSub) {
                 else{
                     document.getElementById("errorMessage").classList.remove("d-none");
                 }
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+                document.getElementById("rememberMe").checked = false;
             };
         },
         login: async function (username, password) {
