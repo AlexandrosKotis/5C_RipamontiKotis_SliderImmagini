@@ -12,7 +12,7 @@ export function adminForm(parentElement, pubSub) {
                     <button id="button" type="button" class="btn btn-primary w-100">Upload</button>
                 </div>`
                 + "<div id='feed-div' class=''></div>"
-                + "<button type='button' class='btn btn-primary w-100' id='submitAdminFrom'>Sumbit</button>"
+                + "<button type='button' class='btn btn-primary w-100' id='submitAdminForm'>Submit</button>"
                 + "<button type='button' class='btn btn-warning w-100 cl' id='cancel'>Cancel</button>";
 
 
