@@ -34,7 +34,7 @@ app.post("/image/add", async (req, res) => {
     await upload(req, res, async (err) => {
         console.log(req.file.filename);
         const filename = req.file.filename;
-        await imagesTable.insert(filename);
+        await imagesTable.insert(("/dist/assets/images/"+filename));
         //res.json({ result: "Ok" });   
         res.json({ url: "/dist/assets/images/" + req.file.filename });
     })
