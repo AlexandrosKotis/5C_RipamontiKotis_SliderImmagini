@@ -10,9 +10,9 @@ import { createPubSub } from "./scripts/pubSub.js";
 const navigator = createNavigator(document.getElementById("body"));
 const pubSub = createPubSub();
 const homePage = images(document.getElementById("carouselContentImages"), pubSub);
-const componentAdminForm = adminForm();
-const componentAdminTable = adminTable();
-const componentCredential = credential(); 
+const componentAdminForm = adminForm(document.getElementById("adminForm"), pubSub);
+const componentAdminTable = adminTable(document.getElementById("adminTable"), pubSub);
+const componentCredential = credential(document.getElementById("login"), pubSub); 
 
 // Go to home
 location.href = "#home"
