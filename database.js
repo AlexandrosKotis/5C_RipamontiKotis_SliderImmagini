@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-module.exports = async function imagesTable (config) {
+module.exports = function imagesTable (config) {
     const connection = mysql.createConnection(config);
 
     function executeQuery(sql) {
@@ -23,7 +23,7 @@ module.exports = async function imagesTable (config) {
         `);
     }
 
-    await createTable();
+    createTable();
     return {
         insert: async function (urlImage) {
             const template = `INSERT INTO images (url) VALUES ('$URL');`;

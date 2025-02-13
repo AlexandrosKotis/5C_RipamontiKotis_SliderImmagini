@@ -1,9 +1,8 @@
 export function images(parentElement, pubSub) {
-    let imgs = [{ id:1, url:"/dist/assets/images/Alter Kaufmannhof.jpg"}, {id:2, url:"/dist/assets/images/kts.jpg"}, {id:3, url:"/dist/assets/images/Nikolai.jpg"}];
-
+    let imgs;
     return {
         build: function () {
-            pubSub.subscribe("images/add",  async (data) => {
+            pubSub.subscribe("images/add", async (data) => {
                 await this.send(data);
                 await this.load();
             });
@@ -12,24 +11,25 @@ export function images(parentElement, pubSub) {
             })
         },
         render: function () {
+            console.log(imgs);
             let html = `<div id="carouselImagesIndicators" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">` +
-                                    imgs.map((img, index) => {
-                                        return `<button type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide-to="`+ index +`" 
+                imgs.map((img, index) => {
+                    return `<button type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide-to="` + index + `" 
                                                 class="` + (index === 0 ? "active" : "") + `" 
                                                 aria-current="` + (index === 0 ? "true" : "false") + `" 
                                                 aria-label="Slide `+ (img.id) + `"></button>`
-                                    }).join("")
-                                + 
-                            `</div>
+                }).join("")
+                +
+                `</div>
                             <div class="carousel-inner">` +
-                                    imgs.map((img, index) => {
-                                        return `<div class="carousel-item `+ (index == 0 ? "active" : "") + `">
-                                                    <img src="`+ img.url + `" class="d-block w-100" alt="Immagine n° `+ img.id + `">
+                imgs.map((img, index) => {
+                    return `<div class="carousel-item ` + (index == 0 ? "active" : "") + `">
+                                                    <img src="`+ img.url + `" class="d-block w-100" alt="Immagine n° ` + img.id + `">
                                                 </div>`
-                                    }).join("")
-                                + 
-                            `</div>
+                }).join("")
+                +
+                `</div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselImagesIndicators" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
@@ -39,7 +39,7 @@ export function images(parentElement, pubSub) {
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>`;
-            
+
             parentElement.innerHTML = html;
         },
 
@@ -64,7 +64,7 @@ export function images(parentElement, pubSub) {
             try {
                 const response = await fetch("/images");
                 const json = await response.json();
-                images = json.images;
+                imgs = json.images;
                 this.render();
                 return json;
             }

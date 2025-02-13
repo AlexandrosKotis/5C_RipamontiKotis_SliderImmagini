@@ -21,4 +21,4 @@ location.href = "#home"
 homePage.build();
 
 // Render
-homePage.render();
+homePage.load();
