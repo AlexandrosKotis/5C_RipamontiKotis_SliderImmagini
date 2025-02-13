@@ -7,6 +7,9 @@ export function images(parentElement, pubSub) {
                 await this.send(data);
                 await this.load();
             });
+            pubSub.subscribe("delete", async (data) => {
+                await this.delete(data);
+            })
         },
         render: function () {
             let html = `<div id="carouselImagesIndicators" class="carousel slide" data-bs-ride="carousel">

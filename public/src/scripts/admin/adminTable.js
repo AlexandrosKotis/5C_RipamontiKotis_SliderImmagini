@@ -42,8 +42,8 @@ export const adminTable = (parentElement, pubSub) => {
                 button.onclick = () => pubSub.publish("images/update", button.dataset.id)
             );*/
 
-            document.querySelectorAll(".remove-btn").forEach(button =>
-                button.onclick = () => pubSub.publish("images/delte/:id", button.dataset.id)
+            document.querySelectorAll(".remove-btn").forEach((button, index) =>
+                button.onclick = () => pubSub.publish("delete", images[index].id)
             );
 
             parentElement.innerHTML = html;
