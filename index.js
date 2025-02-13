@@ -36,7 +36,7 @@ app.post("/image/add", async (req, res) => {
         const filename = req.file.filename;
         await imagesTable.insert(filename);
         //res.json({ result: "Ok" });   
-        res.json({ url: "./dist/assets/images/" + req.file.filename });
+        res.json({ url: "/dist/assets/images/" + req.file.filename });
     })
 });
 
@@ -69,7 +69,7 @@ app.put("/image/update", async (req, res) => {
             console.error(e);
         }
         //res.json({ result: "Ok" });
-        res.json({ url: "./dist/assets/images/" + req.file.filename });
+        res.json({ url: "/dist/assets/images/" + req.file.filename });
     })
 });
 
