@@ -8,10 +8,10 @@ export function images(parentElement, pubSub) {
             });
             pubSub.subscribe("delete", async (data) => {
                 await this.delete(data);
+                await this.load();
             })
         },
         render: function () {
-            console.log(imgs);
             let html = `<div id="carouselImagesIndicators" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">` +
                 imgs.map((img, index) => {
@@ -47,10 +47,7 @@ export function images(parentElement, pubSub) {
             try {
                 const response = await fetch("/image/add", {
                     method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(img)
+                    body: img
                 });
                 const json = await response.json();
                 return json;

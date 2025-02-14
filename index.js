@@ -32,12 +32,11 @@ app.use("/dist", express.static(path.join(__dirname, "dist")));
 
 app.post("/image/add", async (req, res) => {
     await upload(req, res, async (err) => {
-        console.log(req.file.filename);
         const filename = req.file.filename;
         await imagesTable.insert(("/dist/assets/images/"+filename));
         //res.json({ result: "Ok" });   
         res.json({ url: "/dist/assets/images/" + req.file.filename });
-    })
+    });
 });
 
 app.get("/images", async (req, res) => {
@@ -74,8 +73,8 @@ app.put("/image/update", async (req, res) => {
 });
 
 app.delete("/image/delete/:id", async (req, res) => {
-    const todos = await imagesTable.select();
-    const toDelete = todos.filter((element) => element.id == req.params.id);
+    const imgs = await imagesTable.select();
+    const toDelete = imgs.filter((element) => element.id == req.params.id);
     await imagesTable.delete(toDelete[0]);
     res.json({ result: "Ok" });
 })

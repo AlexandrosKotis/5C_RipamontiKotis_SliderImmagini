@@ -37,9 +37,9 @@ module.exports = function imagesTable (config) {
             return await executeQuery(sql);
 
         },
-        delete: async function (todo) {
+        delete: async function (imgs) {
             const template = `DELETE FROM images WHERE id = $ID;`;
-            let sql = template.replace("$ID", todo.id);
+            let sql = template.replace("$ID", imgs.id);
             return await executeQuery(sql);
         },
         select: async function () {

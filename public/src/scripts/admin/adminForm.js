@@ -9,10 +9,9 @@ export function adminForm(parentElement, pubSub) {
             parentElement.innerHTML = `
                 <div class="flex flex-col items-center gap-4">
                     <input id="file" name="file" type="file" accept="image/*" class="form-control required">
-                    <button id="button" type="button" class="btn btn-primary w-100">Upload</button>
+                    <button type='button' class='btn btn-primary w-100' id='submitAdminForm'>Submit</button>
                 </div>`
                 + "<div id='feed-div' class=''></div>"
-                + "<button type='button' class='btn btn-primary w-100' id='submitAdminForm'>Submit</button>"
                 + "<button type='button' class='btn btn-warning w-100 cl' id='cancel'>Cancel</button>";
 
 

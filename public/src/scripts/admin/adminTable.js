@@ -3,10 +3,6 @@ export const adminTable = (parentElement, pubSub) => {
 
     return {
         build: function () {
-            pubSub.subscribe("images/add", (data) => {
-                imagesData = data;
-                this.render();
-            })
         
             pubSub.subscribe("load", (data) => {
                 imagesData = data;
@@ -16,11 +12,13 @@ export const adminTable = (parentElement, pubSub) => {
 
         render: function () {
             let html = `
+            <div class= "row"><button type="button" id="modalForm" class="btn btn-primary">Insert</button></div>
+            <div class="row">
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Anteprima</th>
-                            <th>Nome</th>
+                            <th>Identificativo</th>
                             <th>Azioni</th>
                         </tr>
                     </thead>
@@ -43,7 +41,7 @@ export const adminTable = (parentElement, pubSub) => {
                     </td>
                 </tr>
             `}).join("");
-            html+="</tbody></table>"
+            html+="</tbody></table></div>"
 
             // Gestione eventi per edit e remove
             /*
@@ -54,9 +52,15 @@ export const adminTable = (parentElement, pubSub) => {
             parentElement.innerHTML = html;
 
             
-            document.querySelectorAll(".remove-btn").forEach((button, index) =>
-                button.onclick = () => pubSub.publish("delete", imagesData[index].id)
+            document.querySelectorAll(".remove-btn").forEach((button, index) =>{
+                button.onclick = () => {
+                    pubSub.publish("delete", imagesData[index].id);
+                }
+            }
             );
+            document.getElementById("modalForm").onclick = () => {
+                pubSub.publish("modal");
+            }
         },
     };
 };

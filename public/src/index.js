@@ -33,6 +33,9 @@ pubSub.subscribe("isLogged", data=>{
         document.getElementById("adminTable").classList.remove("d-none");
     }
 });
+pubSub.subscribe("modal", () => {
+    document.getElementById("adminForm").classList.remove("d-none");
+});
 
 componentAdminForm.render();
 componentAdminTable.render();
