@@ -1,11 +1,19 @@
 export const adminTable = (parentElement, pubSub) => {
     let imagesData = [];
-    pubSub.subscribe("images/add", (data) => {
-        imagesData = data;
-        this.render();
-    })
 
     return {
+        build: function () {
+            pubSub.subscribe("images/add", (data) => {
+                imagesData = data;
+                this.render();
+            })
+        
+            pubSub.subscribe("load", (data) => {
+                imagesData = data;
+                this.render();
+            });
+        },
+
         render: function () {
             let html = `
                 <table class="table table-striped">
@@ -18,7 +26,7 @@ export const adminTable = (parentElement, pubSub) => {
                     </thead>
                     <tbody id="image-list">
             `;
-            html = images.map((image, index) => `
+            html = imagesData.map((image, index) => `
                 <tr class="${index % 2 === 0 ? "table-light" : "table-secondary"}">
                     <td><img src="`+image.url+` alt="`+image.name+`" class="img-thumbnail" style="width: 80px;"></td>
                     <td>`+image.name+`</td>
@@ -34,7 +42,7 @@ export const adminTable = (parentElement, pubSub) => {
                     </td>
                 </tr>
             `).join("");
-            html="</tbody></table>"
+            html+="</tbody></table>"
 
             // Gestione eventi per edit e remove
             /*
@@ -42,11 +50,12 @@ export const adminTable = (parentElement, pubSub) => {
                 button.onclick = () => pubSub.publish("images/update", button.dataset.id)
             );*/
 
+            parentElement.innerHTML = html;
+
+            
             document.querySelectorAll(".remove-btn").forEach((button, index) =>
                 button.onclick = () => pubSub.publish("delete", images[index].id)
             );
-
-            parentElement.innerHTML = html;
         },
     };
 };

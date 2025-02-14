@@ -66,6 +66,7 @@ export function images(parentElement, pubSub) {
                 const json = await response.json();
                 imgs = json.images;
                 this.render();
+                pubSub.publish("load", imgs)
                 return json;
             }
             catch (error) {

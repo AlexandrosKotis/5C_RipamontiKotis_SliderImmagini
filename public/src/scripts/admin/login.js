@@ -1,8 +1,8 @@
 export async function credential(parentElement, pubSub) {
+    let config;
     try {
-        let config = await fetch("/configuration");
+        config = await fetch("/configuration");
         config = await config.json();
-        config = JSON.parse(config);
     }
     catch (e) {
         throw e;
@@ -12,7 +12,7 @@ export async function credential(parentElement, pubSub) {
     return {
         render: function () {
             if(isLogged) return; 
-            parentElement.innerHTML = `<div class="bg-dark d-flex justify-content-center align-items-center vh-100">
+            parentElement.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                 <div class="card shadow-lg p-4" style="width: 22rem;">
                                     <h3 class="text-center mb-3">Login</h3>
                                     <div id="errorMessage" class="alert alert-danger d-none" role="alert">
@@ -31,7 +31,7 @@ export async function credential(parentElement, pubSub) {
                                             <input class="form-check-input" type="checkbox" id="rememberMe">
                                             <label class="form-check-label" for="rememberMe">Remember Me</label>
                                         </div>
-                                        <button id="loginSubmit" type="submit" class="btn btn-primary w-100">Login</button>
+                                        <button id="loginSubmit" type="button" class="btn btn-primary w-100">Login</button>
                                     </form>
                                 </div>
                             </div>`;
