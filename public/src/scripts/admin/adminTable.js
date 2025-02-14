@@ -26,10 +26,11 @@ export const adminTable = (parentElement, pubSub) => {
                     </thead>
                     <tbody id="image-list">
             `;
-            html = imagesData.map((image, index) => `
+            html += imagesData.map((image, index) => {
+                return`
                 <tr class="${index % 2 === 0 ? "table-light" : "table-secondary"}">
-                    <td><img src="`+image.url+` alt="`+image.name+`" class="img-thumbnail" style="width: 80px;"></td>
-                    <td>`+image.name+`</td>
+                    <td><img src="`+image.url+`" alt="`+image.id+`" class="img-thumbnail" style="width: 80px;"></td>
+                    <td>`+image.id+`</td>
                     <td>
                     <!--
                         <button type="button" data-id="`+image.id+`" class="btn btn-warning edit-btn mx-1">
@@ -41,7 +42,7 @@ export const adminTable = (parentElement, pubSub) => {
                         </button>
                     </td>
                 </tr>
-            `).join("");
+            `}).join("");
             html+="</tbody></table>"
 
             // Gestione eventi per edit e remove
@@ -54,7 +55,7 @@ export const adminTable = (parentElement, pubSub) => {
 
             
             document.querySelectorAll(".remove-btn").forEach((button, index) =>
-                button.onclick = () => pubSub.publish("delete", images[index].id)
+                button.onclick = () => pubSub.publish("delete", imagesData[index].id)
             );
         },
     };
