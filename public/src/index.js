@@ -50,3 +50,5 @@ pubSub.subscribe("cancel", () => {
 
 //Callback
 document.querySelectorAll(".goAdmin").forEach((anchor) => anchor.onclick = () => componentCredential.render());
+
+//Project fnishied
