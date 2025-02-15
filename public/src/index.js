@@ -21,12 +21,12 @@ location.href = "#home"
 componentAdminTable.build();
 homePage.build();
 
-// Render
+// Render / Load
 homePage.load();
+componentAdminForm.render();
+componentAdminTable.render();
 
-componentCredential.render();
-
-//Done login, add admin table
+//Pubsub
 pubSub.subscribe("isLogged", data=>{
     if(data===true){
         document.getElementById("login").classList.add("d-none");
@@ -37,5 +37,5 @@ pubSub.subscribe("modal", () => {
     document.getElementById("adminForm").classList.remove("d-none");
 });
 
-componentAdminForm.render();
-componentAdminTable.render();
+//Callback
+document.querySelectorAll(".goAdmin").forEach((anchor) => anchor.onclick = () => componentCredential.render());

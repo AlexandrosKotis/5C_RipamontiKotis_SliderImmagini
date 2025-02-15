@@ -11,7 +11,11 @@ export async function credential(parentElement, pubSub) {
 
     return {
         render: function () {
-            if(isLogged) return; 
+            if(isLogged) {
+                //document.getElementById("errorMessage").classList.add("d-none");
+                pubSub.publish("isLogged", true);
+                return;
+            }; 
             parentElement.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                 <div class="card shadow-lg p-4" style="width: 22rem;">
                                     <h3 class="text-center mb-3">Login</h3>
