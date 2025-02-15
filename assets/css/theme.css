@@ -14187,7 +14187,7 @@ a.text-link:hover {
 
 .social-list li {
   font-size: 1.125rem;
-  background: #f4fcf6;
+  background: #f5f4fc;
   width: 32px;
   height: 32px;
   text-align: center;
@@ -14196,7 +14196,7 @@ a.text-link:hover {
 }
 
 .social-list li a {
-  color: #3dd584
+  color: #2C3E50 /**/
 }
 
 .social-list li a:hover {
