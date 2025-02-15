@@ -12,7 +12,7 @@ export const adminTable = (parentElement, pubSub) => {
 
         render: function () {
             let html = `
-            <div class= "row"><button type="button" id="modalForm" class="btn btn-primary">Insert</button></div>
+            <div class= "row mb-3"><button type="button" id="modalForm" class="btn btn-primary">Insert</button></div>
             <div class="row">
                 <table class="table table-striped">
                     <thead>

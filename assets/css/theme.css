@@ -1,6 +1,7 @@
 .page-content{
-  height: 65vh !important;
+  min-height: 65vh !important;
 }
+
 /*!
    * Bootstrap  v5.3.3 (https://getbootstrap.com/)
    * Copyright 2011-2024 The Bootstrap Authors
