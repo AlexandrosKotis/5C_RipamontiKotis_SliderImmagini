@@ -35,7 +35,18 @@ pubSub.subscribe("isLogged", data=>{
 });
 pubSub.subscribe("modal", () => {
     document.getElementById("adminForm").classList.remove("d-none");
+    document.getElementById("adminTable").classList.add("d-none");
 });
+
+pubSub.subscribe("submit", () => {
+    document.getElementById("adminTable").classList.remove("d-none");
+    document.getElementById("adminForm").classList.add("d-none");
+})
+
+pubSub.subscribe("cancel", () => {
+    document.getElementById("adminTable").classList.remove("d-none");
+    document.getElementById("adminForm").classList.add("d-none");
+})
 
 //Callback
 document.querySelectorAll(".goAdmin").forEach((anchor) => anchor.onclick = () => componentCredential.render());
