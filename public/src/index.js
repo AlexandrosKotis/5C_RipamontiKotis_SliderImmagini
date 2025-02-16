@@ -51,4 +51,8 @@ pubSub.subscribe("cancel", () => {
 //Callback
 document.querySelectorAll(".goAdmin").forEach((anchor) => anchor.onclick = () => componentCredential.render());
 
+setInterval(()=>{
+    pubSub.publish("polling");
+}, 30000)
+
 //Project fnishied

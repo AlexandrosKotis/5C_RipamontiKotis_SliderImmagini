@@ -10,6 +10,9 @@ export function images(parentElement, pubSub) {
                 await this.delete(data);
                 await this.load();
             })
+            pubSub.subscribe("polling", async () => {
+                await this.load();
+            });
         },
         render: function () {
             let html = `<div id="carouselImagesIndicators" class="carousel slide" data-bs-ride="carousel">
